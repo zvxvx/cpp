@@ -6,7 +6,6 @@ using namespace std;
 int main() {
   int i = 0;
   int st_num = 0;
-  double avg;
   double total = 0;
   vector<double> num_vec;
 
@@ -36,7 +35,7 @@ int main() {
     }
   }
 
-  avg = total / st_num;
+  double avg = total / st_num;
   double max_val = *max_element(num_vec.begin(), num_vec.end());
   double min_val = *min_element(num_vec.begin(), num_vec.end());
 

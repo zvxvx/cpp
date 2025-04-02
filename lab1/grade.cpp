@@ -40,16 +40,6 @@ int main() {
   double max_val = *max_element(num_vec.begin(), num_vec.end());
   double min_val = *min_element(num_vec.begin(), num_vec.end());
 
-  // cout << "[";
-  // for (int i = 0; i < st_num; i++) {
-  //   if (i == st_num - 1) {
-  //     cout << num_vec[i];
-  //   } else {
-  //     cout << num_vec[i] << ", ";
-  //   }
-  // }
-  // cout << "]" << endl;
-
   cout << "Average score is: " << avg << endl;
   cout << "Min score is: " << min_val << endl;
   cout << "Max score is: " << max_val << endl;

@@ -4,38 +4,41 @@
 using namespace std;
 
 int main() {
-  int st_num;
-  double min_val;
-  double max_val;
+  int i = 0;
+  int st_num = 0;
   double avg;
   double total = 0;
   vector<double> num_vec;
-  bool correct = false;
 
   while (st_num < 2) {
-    cout << "Please enter the number of students: " << endl;
-    while (!(cin >> st_num)) {
-      cerr << "Please enter a valid number of students: " << endl;
+    cout << "Please enter the number of students: ";
+    while (!(cin >> st_num) || cin.get() != '\n') {
+      cerr << "Please enter a valid number of students: ";
       cin.clear();
       cin.ignore(100, '\n');
     }
   }
 
-  for (int i = 0; i < st_num; i++) {
+  while (i < st_num) {
     double grade;
     cout << "Enter score for student " << i + 1 << ": ";
-    cin >> grade;
-    while (grade < 0 || grade > 100) {
-      cout << "Enter a valid score for the student " << i + 1 << ": ";
-      cin >> grade;
+    while (!(cin >> grade) || cin.get() != '\n') {
+      cerr << "Enter a valid score for the student " << i + 1 << ": ";
+      cin.clear();
+      cin.ignore(100, '\n');
+    }
+    if (grade < 0 || grade > 100) {
+      cerr << "Score must be 0-100." << endl;
+      continue;
     }
     total += grade;
     num_vec.push_back(grade);
+    i++;
   }
 
   avg = total / st_num;
-  max_val = *max_element(num_vec.begin(), num_vec.end());
-  min_val = *min_element(num_vec.begin(), num_vec.end());
+  double max_val = *max_element(num_vec.begin(), num_vec.end());
+  double min_val = *min_element(num_vec.begin(), num_vec.end());
 
   // cout << "[";
   // for (int i = 0; i < st_num; i++) {

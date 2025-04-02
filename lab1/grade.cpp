@@ -29,11 +29,11 @@ int main() {
     }
     if (grade < 0 || grade > 100) {
       cerr << "Score must be 0-100." << endl;
-      continue;
+    } else {
+      total += grade;
+      num_vec.push_back(grade);
+      i++;
     }
-    total += grade;
-    num_vec.push_back(grade);
-    i++;
   }
 
   avg = total / st_num;

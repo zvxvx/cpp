@@ -1,0 +1,13 @@
+{
+  "files.associations": {
+    "*.sqlbook": "sql",
+    "*.ndjson": "jsonl",
+    "*.dbclient-js": "javascript",
+    "*.astro": "astro",
+    "iostream": "cpp",
+    "__split_buffer": "cpp",
+    "deque": "cpp",
+    "string": "cpp",
+    "vector": "cpp"
+  }
+}

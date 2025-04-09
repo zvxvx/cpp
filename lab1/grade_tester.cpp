@@ -1,3 +1,9 @@
+/*
+Program: Grade Tester
+Author: Greg Pappas
+Compiler: g++
+*/
+
 #include <algorithm>
 #include <iostream>
 #include <numeric>
@@ -38,7 +44,6 @@ vector<double> getGrades(vector<double> v, int n) {
 
 int main() {
   vector<double> num_vec;
-  int i = 0;
   int st_num = 0;
   st_num = numOfStudents(st_num);
   num_vec = getGrades(num_vec, st_num);

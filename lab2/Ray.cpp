@@ -26,8 +26,9 @@ void Ray::checkIntersection(Sphere& s) {
   double result = (b * b) - (a * c);
 
   if (result < 0) {
-    std::cout << "Ray does not touch or intersect the sphere.";
+    std::cout << "Ray does not touch or intersect the sphere." << std::endl;
   } else {
-    std::cout << "Ray either touches or intersects the sphere.";
+    std::cout << "Ray either touches or intersects the sphere." << std::endl;
   }
+  std::cout << result << std::endl;
 }

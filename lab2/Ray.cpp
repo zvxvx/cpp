@@ -19,10 +19,9 @@ Ray& Ray::setDirection(Point3D d) {
 
 void Ray::checkIntersection(Sphere& s) {
   double a = this->r_direction.squarePoints();
-  double b = this->r_origin.subtractPoints(s.getCenter())
-                 .multiplyPoints(this->r_direction);
-  double c = (this->r_origin.subtractPoints(s.getCenter()).squarePoints()) -
-             (s.getRadius() * s.getRadius());
+  Point3D oMinusC = this->r_origin.subtractPoints(s.getCenter());
+  double b = oMinusC.multiplyPoints(this->r_direction);
+  double c = (oMinusC.squarePoints()) - (s.getRadius() * s.getRadius());
   double result = (b * b) - (a * c);
 
   if (result < 0) {
@@ -30,5 +29,6 @@ void Ray::checkIntersection(Sphere& s) {
   } else {
     std::cout << "Ray either touches or intersects the sphere." << std::endl;
   }
-  std::cout << result << std::endl;
+  std::cout << "a: " << a << " b: " << b << " c: " << c << " result: " << result
+            << std::endl;
 }

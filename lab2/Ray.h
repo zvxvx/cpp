@@ -1,3 +1,9 @@
+/*
+Assignment 2
+Programmer: Greg Pappas
+Compiler: g++
+*/
+
 #ifndef RAY_H
 #define RAY_H
 

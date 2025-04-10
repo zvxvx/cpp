@@ -1,3 +1,9 @@
+/*
+Assignment 2
+Programmer: Greg Pappas
+Compiler: g++
+*/
+
 #ifndef POINT3D_H
 #define POINT3D_H
 

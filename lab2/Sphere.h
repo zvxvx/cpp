@@ -1,3 +1,9 @@
+/*
+Assignment 2
+Programmer: Greg Pappas
+Compiler: g++
+*/
+
 #ifndef SPHERE_H
 #define SPHERE_H
 #include "Point3D.h"

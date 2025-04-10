@@ -1,3 +1,9 @@
+/*
+Assignment 2
+Programmer: Greg Pappas
+Compiler: g++
+*/
+
 #include "Ray.h"
 
 #include <iostream>

@@ -1,3 +1,9 @@
+/*
+Assignment 2
+Programmer: Greg Pappas
+Compiler: g++
+*/
+
 #include "Point3D.h"
 
 Point3D::Point3D() : p_x{0}, p_y{0}, p_z{0} {};

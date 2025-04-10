@@ -1,3 +1,9 @@
+/*
+Assignment 2
+Programmer: Greg Pappas
+Compiler: g++
+*/
+
 #include "Sphere.h"
 
 Sphere::Sphere() : s_center{0, 0, 0}, s_radius{0} {};

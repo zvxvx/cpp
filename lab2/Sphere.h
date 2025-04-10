@@ -1,5 +1,5 @@
 #ifndef SPHERE_H
-#define SPHERE_
+#define SPHERE_H
 #include "Point3D.h"
 
 class Sphere {
@@ -15,6 +15,8 @@ class Sphere {
 
   Sphere& setCenter(Point3D);
   Sphere& setRadius(double);
+
+  friend class Ray;
 };
 
 #endif  // SPHERE_

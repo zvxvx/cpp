@@ -11,9 +11,9 @@ class Color {
   Color(double r, double g, double b);
   Color(const Color& c);
 
-  float getRed() const;
-  float getGreen() const;
-  float getBlue() const;
+  double getRed() const;
+  double getGreen() const;
+  double getBlue() const;
 
   Color& setRed(double);
   Color& setGreen(double);

@@ -1,3 +1,6 @@
+#ifndef COLOR_H
+#define COLOR_H
+
 #include <iostream>
 using namespace std;
 
@@ -28,3 +31,4 @@ class Color {
   friend ostream& operator<<(ostream&, const Color& c);
   friend istream& operator>>(istream&, Color& c);
 };
+#endif

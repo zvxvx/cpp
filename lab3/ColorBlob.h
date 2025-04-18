@@ -9,8 +9,8 @@ class ColorBlob {
   Color** cb_d;
 
  public:
-  ColorBlob() : cb_w{2}, cb_h{2}, cb_d{new Color*[4]} {};
-  ColorBlob(int w, int h, Color** colors) : cb_w{w}, cb_h{h}, cb_d{colors} {};
+  ColorBlob();
+  ColorBlob(int w, int h, Color** colors);
   ColorBlob(const ColorBlob& cb);
   ColorBlob(ColorBlob&& other) noexcept;
   ~ColorBlob();

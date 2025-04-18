@@ -24,7 +24,7 @@ class Color {
   friend Color operator+(const Color& cOne, const Color& cTwo);
   friend Color operator-(const Color& cOne, const Color& cTwo);
   friend Color operator*(const Color& cOne, const Color& cTwo);
-  friend bool operator!(const Color& cOne);
+  friend bool operator!(const Color& c);
   friend ostream& operator<<(ostream&, const Color& c);
   friend istream& operator>>(istream&, Color& c);
 };

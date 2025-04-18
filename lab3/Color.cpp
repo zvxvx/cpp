@@ -30,3 +30,28 @@ Color operator+(const Color& cOne, const Color& cTwo) {
   added.c_blue = clamp(cOne.c_blue + cTwo.c_blue, 0.0, 1.0);
   return added;
 }
+Color operator-(const Color& cOne, const Color& cTwo) {
+  Color subtracted = Color();
+  subtracted.c_red = clamp(cOne.c_red - cTwo.c_red, 0.0, 1.0);
+  subtracted.c_green = clamp(cOne.c_green - cTwo.c_green, 0.0, 1.0);
+  subtracted.c_blue = clamp(cOne.c_blue - cTwo.c_blue, 0.0, 1.0);
+  return subtracted;
+}
+Color operator*(const Color& cOne, const Color& cTwo) {
+  Color multiplied = Color();
+  multiplied.c_red = clamp(cOne.c_red * cTwo.c_red, 0.0, 1.0);
+  multiplied.c_green = clamp(cOne.c_green * cTwo.c_green, 0.0, 1.0);
+  multiplied.c_blue = clamp(cOne.c_blue * cTwo.c_blue, 0.0, 1.0);
+  return multiplied;
+}
+bool operator!(const Color& c) {
+  return c.c_red != 0.0 && c.c_green != 0.0 && c.c_blue != 0.0;
+}
+ostream& operator<<(ostream& os, const Color& c) {
+  os << "Red: " << c.c_red << "Green: " << c.c_green << " Blue: " << c.c_blue
+     << endl;
+  return os;
+}
+istream& operator>>(istream& is, Color& c) {
+  is >> c.c_red >> c.c_green >> c.c_blue;
+}

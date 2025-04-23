@@ -62,7 +62,7 @@ bool operator!(const Color& c) {
   return c.c_red != 0.0 && c.c_green != 0.0 && c.c_blue != 0.0;
 }
 ostream& operator<<(ostream& os, const Color& c) {
-  os << "Red: " << c.c_red << "Green: " << c.c_green << " Blue: " << c.c_blue
+  os << "Red: " << c.c_red << " Green: " << c.c_green << " Blue: " << c.c_blue
      << endl;
   return os;
 }

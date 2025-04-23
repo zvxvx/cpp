@@ -9,21 +9,21 @@ class ColorBlob {
   Color** cb_d;
 
  public:
-  ColorBlob();
-  ColorBlob(int w, int h, Color** colors);
-  ColorBlob(const ColorBlob& cb);
-  ColorBlob(ColorBlob&& other) noexcept;
-  ~ColorBlob();
+  ColorBlob(); // default
+  ColorBlob(int, int, Color); // explicit
+  ColorBlob(const ColorBlob&); // copy constructor
+  ColorBlob(ColorBlob&&) noexcept; // move constructor
+  ~ColorBlob(); //destructor
 
-  ColorBlob& operator=(const ColorBlob& cb);
-  ColorBlob& operator=(ColorBlob&& other) noexcept;
+  ColorBlob& operator=(const ColorBlob& cb); // copy assignment
+  ColorBlob& operator=(ColorBlob&& other) noexcept; // move assignment
 
   friend bool operator==(const ColorBlob& cbOne, const ColorBlob& cbTwo);
   friend ColorBlob operator+(const ColorBlob& cbOne, const ColorBlob& cbTwo);
   friend ColorBlob operator-(const ColorBlob& cbOne, const ColorBlob& cbTwo);
   friend ColorBlob operator*(const ColorBlob& cbOne, const ColorBlob& cbTwo);
   friend bool operator!(const ColorBlob& cb);
-  friend ostream& operator<<(ostream& os, ColorBlob& cb);
+  friend ostream& operator<<(ostream& os, const ColorBlob& cb);
   friend istream& operator>>(istream& is, ColorBlob& cb);
 };
 

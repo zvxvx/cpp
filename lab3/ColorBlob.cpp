@@ -28,12 +28,12 @@ ColorBlob::ColorBlob(const ColorBlob& cb) : cb_w{cb.cb_w}, cb_h{cb.cb_h} {
   }
 };
 ColorBlob::ColorBlob(ColorBlob&& cb) noexcept {
-  (*this).cb_w = cb_w;
-  (*this).cb_h = cb_h;
-  (*this).cb_d = cb_d;
-  cb_w = 0;
-  cb_h = 0;
-  cb_d = nullptr;
+  cb_w = cb.cb_w;
+  cb_h = cb.cb_h;
+  cb_d = cb.cb_d;
+  cb.cb_w = 0;
+  cb.cb_h = 0;
+  cb.cb_d = nullptr;
 }
 ColorBlob::~ColorBlob() {
   for (int i = 0; i < cb_h; i++) {
@@ -41,6 +41,8 @@ ColorBlob::~ColorBlob() {
   }
   delete[] cb_d;
   cb_d = nullptr;
+  cb_h = 0;
+  cb_w = 0;
 };
 
 ColorBlob& ColorBlob::operator=(const ColorBlob& cb) {
@@ -78,13 +80,35 @@ bool operator==(const ColorBlob& cb1, const ColorBlob& cb2) {
   return true;
 }
 
-ColorBlob operator+(const ColorBlob& cbOne, const ColorBlob& cbTwo);
+ColorBlob operator+(const ColorBlob& cbOne, const ColorBlob& cbTwo) {
+  double newHeight = std::min(cbOne.cb_h, cbTwo.cb_h);
+  double newWidth = std::min(cbOne.cb_w, cbTwo.cb_w);
+  ColorBlob added(newWidth, newHeight, Color());
+
+  for (int i = 0; i < newHeight; i++) {
+    for (int j = 0; j < newWidth; j++) {
+      double newBlue = std::min(
+          cbOne.cb_d[i][j].getBlue() + cbTwo.cb_d[i][j].getBlue(), 1.0);
+      double newRed =
+          std::min(cbOne.cb_d[i][j].getRed() + cbTwo.cb_d[i][j].getRed(), 1.0);
+      double newGreen = std::min(
+          cbOne.cb_d[i][j].getGreen() + cbTwo.cb_d[i][j].getGreen(), 1.0);
+
+      added.cb_d[i][j].setBlue(newBlue);
+      added.cb_d[i][j].setRed(newRed);
+      added.cb_d[i][j].setGreen(newGreen);
+    }
+  }
+  return added;
+};
 
 ColorBlob operator-(const ColorBlob& cbOne, const ColorBlob& cbTwo);
 
 ColorBlob operator*(const ColorBlob& cbOne, const ColorBlob& cbTwo);
 
-bool operator!(const ColorBlob& cb);
+bool operator!(const ColorBlob& cb) {
+
+};
 
 ostream& operator<<(ostream& os, const ColorBlob& cb) {
   for (int i = 0; i < cb.cb_h; i++) {

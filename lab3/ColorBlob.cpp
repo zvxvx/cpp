@@ -65,7 +65,23 @@ ColorBlob& ColorBlob::operator=(const ColorBlob& cb) {
   }
 }
 
-ColorBlob& ColorBlob::operator=(ColorBlob&& cb) noexcept {}
+ColorBlob& ColorBlob::operator=(ColorBlob&& cb) noexcept {
+  if (this != &cb) {
+    delete[] cb_d;
+    cb_w = 0;
+    cb_h = 0;
+
+    cb_w = cb.cb_w;
+    cb_h = cb.cb_h;
+    cb_d = cb.cb_d;
+
+    cb.cb_w = 0;
+    cb.cb_h = 0;
+    cb.cb_d = nullptr;
+  }
+
+  return (*this);
+}
 
 bool operator==(const ColorBlob& cb1, const ColorBlob& cb2) {
   if (cb1.cb_w != cb2.cb_w && cb1.cb_h != cb2.cb_h) return false;

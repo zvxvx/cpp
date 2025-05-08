@@ -6,6 +6,7 @@
 #include <string>
 
 using namespace std;
+
 bool Graph::loadCityInformation(const char* fileName) {
   ifstream file(fileName);
   if (!file.is_open()) {
@@ -33,17 +34,34 @@ bool Graph::loadCityInformation(const char* fileName) {
       }
     }
   }
-  // for (int i = 0; i < cityCoordinates.size(); i++) {
-  //   cout << cityCoordinates[i].getX() << " " << cityCoordinates[i].getY() <<
-  //   " "
-  //        << cityCoordinates[i].getZ() << endl;
-  // }
-  // for (int i = 0; i < cityIndices.size(); i++) {
-  //   cout << cityIndices[i] << " ";
-  // }
+  file.close();
   return true;
 }
 
 void Graph::Generate() {
-
+  for (int i = 0; i < cityIndices.size(); i++) {
+    Connectivity[cityIndices[i]].insert(cityIndices[i + 1]);
+  }
 }
+
+void Graph::Print() {
+  map<int, set<int>>::iterator it;
+  set<int>::iterator it2;
+  for (it = Connectivity.begin(); it != Connectivity.end(); it++) {
+    cout << "Key: " << it->first << " ";
+    for (it2 = it->second.begin(); it2 != it->second.end(); it2++) {
+      cout << "Value: " << *it2 << " ";
+    }
+  }
+}
+void Graph::showConnectivity(int a) {}
+
+// OLD PRINT OUT FOR CITY INFO
+// for (int i = 0; i < cityCoordinates.size(); i++) {
+//   cout << cityCoordinates[i].getX() << " " << cityCoordinates[i].getY() <<
+//   " "
+//        << cityCoordinates[i].getZ() << endl;
+// }
+// for (int i = 0; i < cityIndices.size(); i++) {
+//   cout << cityIndices[i] << " ";
+// }

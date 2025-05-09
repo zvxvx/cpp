@@ -19,7 +19,7 @@ int main(int argc, char** argv) {
 
   g.Print();  // shows the connectivity information for all 46 cities;
 
-  // g.showConnectivity(0); //shows connectivity information for city 0;
-  // g.showConnectivity(13); //shows connectivity information for city 13
+  g.showConnectivity(0); //shows connectivity information for city 0;
+  g.showConnectivity(13); //shows connectivity information for city 13
   return 0;
 }

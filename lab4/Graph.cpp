@@ -39,8 +39,13 @@ bool Graph::loadCityInformation(const char* fileName) {
 }
 
 void Graph::Generate() {
-  for (int i = 0; i < cityIndices.size(); i++) {
+  for (int i = 0; i < cityIndices.size(); i += 3) {
     Connectivity[cityIndices[i]].insert(cityIndices[i + 1]);
+    Connectivity[cityIndices[i]].insert(cityIndices[i + 2]);
+    Connectivity[cityIndices[i + 1]].insert(cityIndices[i]);
+    Connectivity[cityIndices[i + 1]].insert(cityIndices[i + 2]);
+    Connectivity[cityIndices[i + 2]].insert(cityIndices[i]);
+    Connectivity[cityIndices[i + 2]].insert(cityIndices[i + 1]);
   }
 }
 
@@ -48,13 +53,30 @@ void Graph::Print() {
   map<int, set<int>>::iterator it;
   set<int>::iterator it2;
   for (it = Connectivity.begin(); it != Connectivity.end(); it++) {
-    cout << "Key: " << it->first << " ";
+    cout << "[" << it->first << "] ";
     for (it2 = it->second.begin(); it2 != it->second.end(); it2++) {
-      cout << "Value: " << *it2 << " ";
+      cout << *it2 << " ";
     }
+    cout << endl;
   }
 }
-void Graph::showConnectivity(int a) {}
+void Graph::showConnectivity(int a) {
+  double x1, y1, z1;
+  map<int, set<int>>::iterator it;
+  for (auto it = Connectivity.find(a)->second.begin();
+       it != Connectivity.find(a)->second.end(); it++) {
+    x1 = cityCoordinates[*it].getX();
+    y1 = cityCoordinates[*it].getY();
+    z1 = cityCoordinates[*it].getZ();
+  }
+  // cout << x1 << " " << y1 << " " << z1 << endl;
+
+  cout << "Showing Connectivity for Node " << a << ": " << endl;
+  for (int i = 0; i < Connectivity[a].size(); i++) {
+    cout << "[" << a << "-" << *next(Connectivity[a].begin(), i) << "]" << endl;
+  }
+  cout << endl;
+}
 
 // OLD PRINT OUT FOR CITY INFO
 // for (int i = 0; i < cityCoordinates.size(); i++) {

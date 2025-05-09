@@ -77,13 +77,3 @@ void Graph::showConnectivity(int a) {
   }
   cout << endl;
 }
-
-// OLD PRINT OUT FOR CITY INFO
-// for (int i = 0; i < cityCoordinates.size(); i++) {
-//   cout << cityCoordinates[i].getX() << " " << cityCoordinates[i].getY() <<
-//   " "
-//        << cityCoordinates[i].getZ() << endl;
-// }
-// for (int i = 0; i < cityIndices.size(); i++) {
-//   cout << cityIndices[i] << " ";
-// }

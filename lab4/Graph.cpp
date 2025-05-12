@@ -1,3 +1,8 @@
+/*
+Assignment 4
+Programmer: Greg Pappas
+Compiler: g++
+*/
 #include "Graph.h"
 
 #include <fstream>
@@ -7,7 +12,7 @@
 
 using namespace std;
 
-bool Graph::loadCityInformation(const char* fileName) {
+bool Graph::loadCityInformation(const char *fileName) {
   ifstream file(fileName);
   if (!file.is_open()) {
     cerr << "Error opening file!";
@@ -50,6 +55,7 @@ void Graph::Generate() {
 }
 
 void Graph::Print() {
+  cout << "Printing information for all cities:" << endl;
   map<int, set<int>>::iterator it;
   set<int>::iterator it2;
   for (it = Connectivity.begin(); it != Connectivity.end(); it++) {
@@ -59,21 +65,32 @@ void Graph::Print() {
     }
     cout << endl;
   }
+  cout << endl;
 }
 void Graph::showConnectivity(int a) {
   double x1, y1, z1;
   map<int, set<int>>::iterator it;
+
+  double x = cityCoordinates[a].getX();
+  double y = cityCoordinates[a].getY();
+  double z = cityCoordinates[a].getZ();
+
+  Point3D first = Point3D(x, y, z);
+
+  cout << "Showing Connectivity for Node " << a << ": " << endl;
+
   for (auto it = Connectivity.find(a)->second.begin();
        it != Connectivity.find(a)->second.end(); it++) {
     x1 = cityCoordinates[*it].getX();
     y1 = cityCoordinates[*it].getY();
     z1 = cityCoordinates[*it].getZ();
-  }
-  // cout << x1 << " " << y1 << " " << z1 << endl;
 
-  cout << "Showing Connectivity for Node " << a << ": " << endl;
-  for (int i = 0; i < Connectivity[a].size(); i++) {
-    cout << "[" << a << "-" << *next(Connectivity[a].begin(), i) << "]" << endl;
+    Point3D second = Point3D(x1, y1, z1);
+
+    double result = sqrt(((x1 - x) * (x1 - x)) + ((y1 - y) * (y1 - y)) +
+                         ((z1 - z) * (z1 - z)));
+    cout << "[" << a << "-" << *it << "]: " << result << endl;
+    ;
   }
   cout << endl;
 }

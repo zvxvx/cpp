@@ -1,3 +1,8 @@
+/*
+Assignment 4
+Programmer: Greg Pappas
+Compiler: g++
+*/
 #ifndef GRAPH_H
 #define GRAPH_H
 

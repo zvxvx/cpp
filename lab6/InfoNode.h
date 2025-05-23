@@ -1,6 +1,9 @@
 #ifndef INFONODE_H
 #define INFONODE_H
 
+#include <iostream>
+using namespace std;
+
 template <class T, class U, class V>
 class InfoRepository;
 

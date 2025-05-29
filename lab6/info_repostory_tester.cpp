@@ -16,7 +16,7 @@ int main(){
 
 	infoRepository.printInformation();
 
-	// infoRepository.retrieveInfoNode(3010731);
+	infoRepository.retrieveInfoNode(3010731);
 
 	InfoRepository<string, string, double> infoRepositoryOne("BookStore");
 
@@ -27,7 +27,7 @@ int main(){
 	
 	infoRepositoryOne.printInformation();
 
-	// infoRepositoryOne.retrieveInfoNode("0-201-70353-X");
+	infoRepositoryOne.retrieveInfoNode("0-201-70353-X");
 
 	InfoRepository<string, string, string> infoRepositoryTwo("Census Data");
 
@@ -37,7 +37,7 @@ int main(){
 	
 	infoRepositoryTwo.printInformation();
 
-	// infoRepositoryTwo.retrieveInfoNode("659-40-259");
+	infoRepositoryTwo.retrieveInfoNode("659-40-259");
 	
 
 	return 0;

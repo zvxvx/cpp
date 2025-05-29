@@ -1,8 +1,15 @@
+/**
+ * Author: Greg Pappas
+ * Assignment: Lab 6
+ * Compiler: g++
+ */
 #ifndef INFOREPOSITORY_H
 #define INFOREPOSITORY_H
+#include <iomanip>
+
 #include "InfoNode.h"
 
-template <class T, class U, class V>
+template <typename T, typename U, typename V>
 class InfoRepository {
  private:
   InfoNode<T, U, V>* first;
@@ -21,26 +28,60 @@ template <typename T, typename U, typename V>
 InfoRepository<T, U, V>::~InfoRepository() {
   InfoNode<T, U, V>* cur = first;
   while (cur != nullptr) {
-    InfoNode<T, U, V>* next = cur->next;
     delete cur;
-    cur = next;
+    cur = cur->next;
   }
 }
 
-template <class T, class U, class V>
+template <typename T, typename U, typename V>
 void InfoRepository<T, U, V>::addInfo(T t, U u, V v) {
   InfoNode<T, U, V>* node = new InfoNode<T, U, V>(t, u, v, first);
   first = node;
 }
 
-template <class T, class U, class V>
-void InfoRepository<T, U, V>::printInformation() {
-  InfoNode<T, U, V>* temp = first;
-  while (temp != nullptr) {
-    cout << temp->dataOne << "" << temp->dataTwo << "" << temp->dataThree
-         << endl;
-    temp = temp->next;
+template <typename T, typename U, typename V>
+bool InfoRepository<T, U, V>::isEmpty() {
+  if (first == nullptr) {
+    return true;
   }
+  return false;
+}
+
+template <typename T, typename U, typename V>
+void InfoRepository<T, U, V>::printInformation() {
+  InfoNode<T, U, V>* cur = first;
+  cout << "Printing " << this->iName << " info....." << endl;
+  cout << endl;
+  while (cur != nullptr) {
+    cout << left << setw(15) << cur->dataOne << setw(30) << cur->dataTwo
+         << right << fixed << setprecision(2) << cur->dataThree << endl;
+    cur = cur->next;
+  }
+  cout << endl;
+}
+
+template <typename T, typename U, typename V>
+void InfoRepository<T, U, V>::retrieveInfoNode(const T& t) {
+  InfoNode<T, U, V>* cur = first;
+  bool idFound = false;
+  cout << "Retrieving Node with id " << t << " from the database....." << endl;
+  while (cur != nullptr) {
+    if (cur->dataOne == t) {
+      cout << "Node with id " << t << " was found in the database." << endl;
+      idFound = true;
+      break;
+    }
+    cur = cur->next;
+  }
+  if (!idFound) {
+    cout << "No Node with id " << t << " exists in the list." << endl;
+  } else {
+    cout << endl;
+    cout << "Here is the information....." << endl;
+    cout << left << setw(15) << cur->dataOne << setw(30) << cur->dataTwo
+         << right << fixed << setprecision(2) << cur->dataThree << endl;
+  }
+  cout << endl;
 }
 
 #endif
